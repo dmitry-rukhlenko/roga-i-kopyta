@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рога и копыта - Черноморское отделение</title>
+    <style>
+        :root {
+            --primary-red: #8b0000;
+            --paper-bg: #f4f1ea;
+            --ink-black: #2c2c2c;
+            --accent-gold: #c5a059;
+            --text-gray: #4a4a4a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--paper-bg);
+            color: var(--ink-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(244, 241, 234, 0.98);
+            border-bottom: 2px solid var(--primary-red);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .main-logo {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-black);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Главный экран */
+        .hero {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                        url('https://img51994.domkino.tv/img/2018-01-08/fmt_114_24_67a9e9c50535f76a6f2328703724b2e2.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 850px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.1rem 2.8rem;
+            background-color: var(--primary-red);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #a00000;
+            transform: translateY(-2px);
+        }
+
+        /* Лицо учреждения */
+        .office-identity {
+            background-color: white;
+            padding: 5rem 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .identity-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .identity-image img {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .identity-text h3 {
+            color: var(--primary-red);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* Секции */
+        section {
+            padding: 90px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
+        }
+
+        /* О компании */
+        .about-block {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 480px;
+            box-shadow: 12px 12px 0 var(--accent-gold);
+        }
+
+        /* Направления */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2.5rem;
+            border-top: 5px solid var(--primary-red);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-card h3 {
+            margin-bottom: 1.2rem;
+            color: var(--primary-red);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        /* Инфраструктура */
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .infra-item {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .infra-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .infra-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .infra-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(139, 0, 0, 0.9);
+            color: white;
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        /* Команда */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .team-member img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            filter: grayscale(1);
+            border: 4px solid var(--paper-bg);
+        }
+
+        .team-member h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .member-role {
+            font-weight: bold;
+            color: var(--primary-red);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        /* Вакансии */
+        .vacancy-container {
+            background: white;
+            border: 2px dashed #ccc;
+            padding: 3rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .vacancy-container h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .vacancy-list {
+            margin: 1.5rem 0 1.5rem 1.5rem;
+        }
+
+        .vacancy-list li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Контакты */
+        .contacts-flex {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-details p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-visual {
+            flex: 1;
+        }
+
+        .contact-visual img {
+            width: 100%;
+            border: 1px solid #ccc;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Футер */
+        footer {
+            background: var(--ink-black);
+            color: #ddd;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .footer-divider {
+            max-width: 200px;
+            height: 1px;
+            background: #444;
+            margin: 2rem auto;
+        }
+
+        /* Управление печатной машинкой */
+        .typewriter-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .typewriter-label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #444;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px; width: 20px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-red);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .about-block, .identity-grid, .team-grid, .infra-grid, .contacts-flex {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+            .about-image img { width: 100%; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo-container">
+                <svg class="main-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5 L95 25 L85 90 L15 90 L5 25 Z" fill="#8b0000" stroke="#2c2c2c" stroke-width="1"/>
+                    <path d="M25 35 C25 20, 50 25, 50 35 M75 35 C75 20, 50 25, 50 35" fill="none" stroke="#f4f1ea" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M40 55 L60 55 L58 75 L42 75 Z" fill="#f4f1ea"/>
+                    <path d="M42 80 L49 80 L50 88 L41 88 Z" fill="#f4f1ea"/>
+                    <path d="M51 80 L58 80 L59 88 L50 88 Z" fill="#f4f1ea"/>
+                    <text x="50" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#f4f1ea">РК</text>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-title">Рога и Копыта</span>
+                    <span class="logo-subtitle">Черноморское Отделение</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">О компании</a></li>
+                <li><a href="#activities">Направления</a></li>
+                <li><a href="#infra">Инфраструктура</a></li>
+                <li><a href="#team">Команда</a></li>
+                <li><a href="#vacancies">Вакансии</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Заготовка. Качество. Дисциплина.</h1>
+                    <p>Черноморское отделение Арбатовской конторы: надежный поставщик вторичного сырья для нужд гребеночной и мундштучной промышленности.</p>
+                    <a href="#contacts" class="cta-button">Подать прошение</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="office-identity">
+            <div class="identity-grid">
+                <div class="identity-image">
+                    <img src="https://i.47news.ru/titles/2022/09/20220930_f3o1xq95qy3xvyp5iw7k.jpg" alt="Кабинет управления">
+                </div>
+                <div class="identity-text">
+                    <h3>Лицо учреждения</h3>
+                    <p>На снимке представлено рабочее пространство руководства в часы приема посетителей. Здесь, в атмосфере канцелярской важности и административной ответственности, принимаются ключевые решения по обеспечению промышленного сектора необходимым рого-копытным сырьем.</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="about">
+            <h2>О компании</h2>
+            <div class="about-block">
+                <div class="about-image">
+                    <img src="https://cdn.7days.ru/pic/7ca/86ECF550BEE54DB644257A76003CB1BC/72273.jpg" alt="Главное здание отделения">
+                </div>
+                <div class="about-text">
+                    <p>Черноморское отделение функционирует как ключевой филиал Арбатовской конторы. Мы специализируемся на централизованном сборе и первичной обработке рогов и копыт, обеспечивая сырьевую независимость важнейших отраслей легкой промышленности.</p>
+                    <p style="margin-top: 1.5rem;">Наша структура объединяет заготовительный аппарат, секретариат и службу оперативной доставки, гарантируя безупречное исполнение плановых показателей и железную исполнительскую дисциплину.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="activities">
+            <h2>Ключевые направления деятельности.</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>Заготовка рогов</h3>
+                    <p>Профессиональный сбор и классификация рогового материала для нужд гребеночных предприятий.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>Заготовка копыт</h3>
+                    <p>Организация регулярных поставок копытной продукции для мундштучного производства.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>Делопроизводство</h3>
+                    <p>Высококлассное ведение журналов, учет входящей почты и подготовка сметной документации.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>Администрирование</h3>
+                    <p>Координация работы персонала, участие в совещаниях и поддержание офисного порядка.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="infra">
+            <h2>Инфраструктура и рабочая среда</h2>
+            <div class="infra-grid">
+                <div class="infra-item">
+                    <img src="https://stuki-druki.com/film/images/kadr-zolotoy-telenok-1968-08.jpg" alt="Вход">
+                    <div class="infra-caption">Входная группа и официальная вывеска учреждения.</div>
+                </div>
+                <div class="infra-item">
+                    <img src="https://stuki-druki.com/film/images/kadr-zolotoy-telenok-1968-10.jpg" alt="Прием">
+                    <div class="infra-caption">Зал ожидания и зона первичного приема посетителей.</div>
+                </div>
+                <div class="infra-item">
+                    <img src="https://stuki-druki.com/film/images/kadr-zolotoy-telenok-1968-03.jpg" alt="Кабинет">
+                    <div class="infra-caption">Рабочий кабинет для административного планирования.</div>
+                </div>
+                <div class="infra-item">
+                    <img src="https://stuki-druki.com/film/images/kadr-zolotoy-telenok-1968-04.jpg" alt="Персонал">
+                    <div class="infra-caption">Служебное помещение для обработки оперативных данных.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <h2>Команда</h2>
+            <p style="text-align: center; margin-bottom: 3.5rem; color: var(--text-gray);">В разделе представлены руководители и сотрудники отделения с указанием должностей, функциональных обязанностей и зон ответственности.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://upload.wikimedia.org/wikipedia/ru/2/26/Yurskiy_as_Ostap_Bender.jpg" alt="Остап Бендер">
+                    <span class="member-role">Начальник отделения</span>
+                    <h4>Остап Бендер</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://www.peoples.ru/art/cinema/characters/shura_balaganov/balaganov_6.jpg" alt="Шура Балаганов">
+                    <span class="member-role">Уполномоченный по копытам</span>
+                    <h4>Шура Балаганов</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrkVgoOVjQUZ-MqM5e8Y5zeySawyriTS0qMQ&s" alt="Паниковский">
+                    <span class="member-role">Курьер</span>
+                    <h4>М. С. Паниковский</h4>
+                </div>
+                <div class="team-member">
+                    <img src="https://citaty.info/files/portraits/funt.jpg" alt="Фунт">
+                    <span class="member-role">Зицпредседатель</span>
+                    <h4>Фунт</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="vacancies">
+            <h2>Вакансии</h2>
+            <div class="vacancy-container">
+                <h3>Конторщица (1 штатная единица)</h3>
+                <p><strong>Обязанности:</strong></p>
+                <ul class="vacancy-list">
+                    <li>Ведение входящей и исходящей переписки;</li>
+                    <li>Печать писем, справок и внутренних документов;</li>
+                    <li>Оформление смет, ведомостей и учетных листов;</li>
+                    <li>Организация приема посетителей;</li>
+                    <li>Поддержание порядка в кабинете и канцелярской дисциплины.</li>
+                </ul>
+                <p>Кандидатуры рассматриваются при личном визите в часы приема.</p>
+            </div>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <div class="contacts-flex">
+                <div class="contact-details">
+                    <p><strong>Местоположение:</strong> г. Черноморск, помещение со стеклянной дверью, барьером для посетителей и атмосферой канцелярской важности.</p>
+                    <p style="margin-top: 1.5rem;"><strong>График работы:</strong></p>
+                    <p>Понедельник - Пятница: 09:00 - 18:00 (Обед 13:00 - 14:00)</p>
+                    <p>Суббота: 10:00 - 14:00</p>
+                    <p>Воскресенье: выходной</p>
+                </div>
+                <div class="contact-visual">
+                    <img src="https://www.insur-info.ru/files/_public/_history/028/04.jpg" alt="Рабочее время">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">Черноморское отделение «Рога и копыта»</div>
+        <p>© 1930 - 2026. Соблюдайте тишину в присутственных местах.</p>
+        
+        <div class="footer-divider"></div>
+
+        <div id="control-unit" class="typewriter-control">
+            <span class="typewriter-label">Турэцкая печатная машинка</span>
+            <label class="switch">
+                <input type="checkbox" id="typo-switch" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </footer>
+
+    <script>
+        const typoSwitch = document.getElementById('typo-switch');
+        let originalTextMap = new Map();
+
+        // Функция рекурсивного сбора текстовых узлов
+        function collectText(node) {
+            if (node.nodeType === 3) {
+                if (!originalTextMap.has(node)) {
+                    originalTextMap.set(node, node.nodeValue);
+                }
+            } else if (node.nodeType === 1) {
+                // Исключаем скрипты, стили и саму панель управления
+                if (node.tagName === 'SCRIPT' || node.tagName === 'STYLE' || node.id === 'control-unit') return;
+                node.childNodes.forEach(collectText);
+            }
+        }
+
+        // Функция обновления текста на всей странице
+        function updatePageLanguage() {
+            const isActive = typoSwitch.checked;
+            originalTextMap.forEach((original, node) => {
+                if (isActive) {
+                    node.nodeValue = original.replace(/е/g, 'э').replace(/Е/g, 'Э');
+                } else {
+                    node.nodeValue = original;
+                }
+            });
+        }
+
+        // Слушатель событий переключателя
+        typoSwitch.addEventListener('change', () => {
+            updatePageLanguage();
+            localStorage.setItem('typewriterState', typoSwitch.checked);
+        });
+
+        // Инициализация при загрузке
+        window.addEventListener('DOMContentLoaded', () => {
+            collectText(document.body);
+            
+            const savedState = localStorage.getItem('typewriterState');
+            // По умолчанию (первый запуск) - режим "э" включен
+            if (savedState !== null) {
+                typoSwitch.checked = (savedState === 'true');
+            } else {
+                typoSwitch.checked = true;
+            }
+            
+            updatePageLanguage();
+        });
+
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
