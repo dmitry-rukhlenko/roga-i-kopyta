@@ -1,9 +1,12 @@
 :root {
     --primary-red: #8b0000;
     --paper-bg: #f4f1ea;
+    --paper-soft: #fbf7ef;
     --ink-black: #2c2c2c;
     --accent-gold: #c5a059;
     --text-gray: #4a4a4a;
+    --deep-shadow: 0 28px 60px rgba(44, 44, 44, 0.12);
+    --soft-shadow: 0 12px 26px rgba(44, 44, 44, 0.08);
     --transition: all 0.3s ease;
 }
 
@@ -19,7 +22,9 @@ html {
 
 body {
     font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--paper-bg);
+    background:
+        radial-gradient(circle at top left, rgba(197, 160, 89, 0.14), transparent 26%),
+        linear-gradient(180deg, #f8f4eb 0%, var(--paper-bg) 45%, #efe7d7 100%);
     color: var(--ink-black);
     line-height: 1.6;
     overflow-x: hidden;
@@ -43,7 +48,8 @@ header {
     background: rgba(244, 241, 234, 0.98);
     border-bottom: 2px solid var(--primary-red);
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 nav {
@@ -129,6 +135,27 @@ nav {
     color: var(--primary-red);
 }
 
+.nav-links a.is-active {
+    color: var(--primary-red);
+}
+
+.nav-links a.is-active::after,
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-links a::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 0.35rem;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
 .logo-container:focus-visible,
 .nav-links a:focus-visible,
 .cta-button:focus-visible,
@@ -140,15 +167,29 @@ nav {
 
 /* Главный экран */
 .hero {
-    height: 500px;
+    min-height: 620px;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 60px;
+    padding: 110px 0 80px;
     background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
                 url('images/hero-bg.jpg') center/cover no-repeat;
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: auto -10% -25% auto;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.28), transparent 68%);
+    pointer-events: none;
 }
 
 .hero-container {
@@ -156,17 +197,43 @@ nav {
     padding: 0 2rem;
 }
 
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.95rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
 .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
     text-transform: uppercase;
     margin-bottom: 1rem;
     letter-spacing: 2px;
+    line-height: 1.05;
+    text-wrap: balance;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.18rem;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: 400;
+    max-width: 55rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-button {
@@ -177,9 +244,9 @@ nav {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: 999px;
     transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.2);
 }
 
 .cta-button:hover {
@@ -187,9 +254,55 @@ nav {
     transform: translateY(-2px);
 }
 
+.cta-button-secondary {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    color: white;
+}
+
+.cta-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-metrics {
+    margin-top: 2.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.hero-metric {
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--soft-shadow);
+}
+
+.hero-metric strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+    color: #fff6e5;
+}
+
+.hero-metric span {
+    display: block;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.84);
+}
+
 /* Лицо учреждения */
 .office-identity {
-    background-color: white;
+    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.98));
     padding: 5rem 2rem;
     border-bottom: 1px solid #ddd;
 }
@@ -208,7 +321,12 @@ nav {
     border: 1px solid #ccc;
     padding: 10px;
     background: white;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: var(--deep-shadow);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.identity-grid:hover .identity-image img {
+    transform: translateY(-4px) scale(1.01);
 }
 
 .identity-text h3 {
@@ -223,6 +341,12 @@ section {
     padding: 90px 2rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+#activities,
+#vacancies {
+    background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(251,247,239,0.85));
+    border-radius: 32px;
 }
 
 h2 {
@@ -254,11 +378,36 @@ h2::after {
 
 .about-image img {
     width: 480px;
-    box-shadow: 12px 12px 0 var(--accent-gold);
+    box-shadow: 12px 12px 0 var(--accent-gold), var(--deep-shadow);
+    transition: transform 0.45s ease;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image:hover img {
+    transform: translateY(-4px);
 }
 
 .stacked-paragraph {
     margin-top: 1.5rem;
+}
+
+.photo-stamp {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    padding: 0.45rem 0.8rem;
+    border: 2px solid rgba(139, 0, 0, 0.8);
+    color: var(--primary-red);
+    background: rgba(255, 248, 236, 0.92);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    font-weight: 800;
+    transform: rotate(-8deg);
+    box-shadow: var(--soft-shadow);
 }
 
 /* Направления */
@@ -269,15 +418,19 @@ h2::after {
 }
 
 .activity-card {
-    background: white;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,247,239,0.96));
     padding: 2.5rem;
     border-top: 5px solid var(--primary-red);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: var(--transition);
+    box-shadow: var(--soft-shadow);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .activity-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: var(--deep-shadow);
+    border-top-color: var(--accent-gold);
 }
 
 .activity-card h3 {
@@ -285,6 +438,30 @@ h2::after {
     color: var(--primary-red);
     font-size: 1.1rem;
     text-transform: uppercase;
+}
+
+.activity-card::before {
+    content: "";
+    position: absolute;
+    inset: -40% auto auto 65%;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.16), transparent 72%);
+    transition: transform 0.4s ease;
+}
+
+.activity-card:hover::before {
+    transform: scale(1.15);
+}
+
+.card-index {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--accent-gold);
 }
 
 /* Инфраструктура */
@@ -298,27 +475,51 @@ h2::after {
     position: relative;
     height: 280px;
     overflow: hidden;
+    border-radius: 24px;
+    box-shadow: var(--soft-shadow);
 }
 
 .infra-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.55s ease, filter 0.55s ease;
 }
 
 .infra-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: saturate(1.08);
+}
+
+.infra-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.34));
+    transition: opacity 0.35s ease;
+}
+
+.infra-item:hover::after {
+    opacity: 0.9;
 }
 
 .infra-caption {
     position: absolute;
     bottom: 0;
-    background: rgba(139, 0, 0, 0.9);
+    background: linear-gradient(180deg, rgba(139, 0, 0, 0.2), rgba(139, 0, 0, 0.92));
     color: white;
     width: 100%;
-    padding: 0.8rem 1.2rem;
+    padding: 1.1rem 1.2rem;
     font-size: 0.95rem;
+    z-index: 1;
+    transform: translateY(8px);
+    opacity: 0.92;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.infra-item:hover .infra-caption {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 /* Команда */
@@ -329,15 +530,19 @@ h2::after {
 }
 
 .team-member {
-    background: white;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,247,239,0.96));
     padding: 2rem 1.5rem;
     text-align: center;
     border: 1px solid #eee;
-    transition: var(--transition);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    border-radius: 24px;
+    box-shadow: var(--soft-shadow);
 }
 
 .team-member:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    box-shadow: var(--deep-shadow);
+    border-color: rgba(197, 160, 89, 0.45);
 }
 
 .team-member img {
@@ -348,6 +553,13 @@ h2::after {
     margin-bottom: 1.5rem;
     filter: grayscale(1);
     border: 4px solid var(--paper-bg);
+    transition: transform 0.35s ease, filter 0.35s ease, border-color 0.35s ease;
+}
+
+.team-member:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0);
+    border-color: rgba(197, 160, 89, 0.45);
 }
 
 .team-member h4 {
@@ -364,6 +576,12 @@ h2::after {
     display: block;
 }
 
+.team-note {
+    margin-top: 0.9rem;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
 .section-lead {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -372,11 +590,14 @@ h2::after {
 
 /* Вакансии */
 .vacancy-container {
-    background: white;
-    border: 2px dashed #ccc;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,247,239,0.98));
+    border: 2px dashed rgba(139, 0, 0, 0.26);
     padding: 3rem;
     max-width: 750px;
     margin: 0 auto;
+    border-radius: 28px;
+    box-shadow: var(--deep-shadow);
+    position: relative;
 }
 
 .vacancy-container h3 {
@@ -391,6 +612,21 @@ h2::after {
 
 .vacancy-list li {
     margin-bottom: 0.6rem;
+}
+
+.vacancy-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.8rem;
+    margin-bottom: 1rem;
+    background: rgba(139, 0, 0, 0.08);
+    color: var(--primary-red);
+    border: 1px solid rgba(139, 0, 0, 0.18);
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 800;
 }
 
 /* Контакты */
@@ -422,7 +658,12 @@ h2::after {
     height: auto;
     object-fit: contain;
     border: 1px solid #ccc;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--deep-shadow);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.contact-visual:hover img {
+    transform: translateY(-4px) scale(1.01);
 }
 
 /* Футер */
@@ -510,6 +751,17 @@ input:checked + .slider:before {
     transform: translateX(24px);
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Адаптивность */
 @media (max-width: 900px) {
     nav {
@@ -559,13 +811,16 @@ input:checked + .slider:before {
     }
 
     .hero {
-        min-height: 460px;
-        height: auto;
-        padding: 110px 0 70px;
+        min-height: 560px;
+        padding: 120px 0 70px;
     }
 
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    .hero-metrics {
+        grid-template-columns: 1fr;
     }
 
     .hero p,
@@ -593,6 +848,10 @@ input:checked + .slider:before {
     .hero h1 {
         font-size: 1.9rem;
         letter-spacing: 1px;
+    }
+
+    .hero-kicker {
+        font-size: 0.7rem;
     }
 
     h2 {
