@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рога и копыта - Черноморское отделение</title>
-    <meta name="description" content="Официальный сайт Черноморского отделения Арбатовской конторы по заготовке рогов и копыт для нужд гребеночной и мундштучной промышленности.">
+    <title>Рога и копыта — Черноморское отделение Арбатовской конторы</title>
+    <meta name="description" content="Черноморское отделение Арбатовской конторы ведет заготовку рогов и копыт, делопроизводство, прием посетителей и кадровое сопровождение в стилистике официальной абсурдной канцелярии.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#8b0000">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:title" content="Рога и копыта - Черноморское отделение">
-    <meta property="og:description" content="Черноморское отделение Арбатовской конторы: заготовка, делопроизводство и административная дисциплина в деловом ритме учреждения.">
-    <meta property="og:image" content="images/office-identity.jpg">
+    <meta property="og:site_name" content="Рога и копыта">
+    <meta property="og:title" content="Рога и копыта — Черноморское отделение Арбатовской конторы">
+    <meta property="og:description" content="Черноморское отделение Арбатовской конторы ведет заготовку рогов и копыт, делопроизводство, прием посетителей и кадровое сопровождение в стилистике официальной абсурдной канцелярии.">
+    <meta property="og:image" content="images/hero-bg.jpg">
+    <meta property="og:image:alt" content="Руководство Черноморского отделения за рабочим столом в часы приема посетителей">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Рога и копыта — Черноморское отделение Арбатовской конторы">
+    <meta name="twitter:description" content="Официальный одностраничный сайт абсурдной канцелярии: заготовка рогов и копыт, прием прошений и образцовая дисциплина.">
+    <meta name="twitter:image" content="images/hero-bg.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="images/office-identity.jpg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
 
-    <header>
+    <header class="site-header">
         <nav aria-label="Главная навигация">
             <a href="#home" class="logo-container">
                 <svg class="main-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -51,35 +59,37 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero" id="home">
+    <main id="main-content">
+        <section class="hero" id="home" aria-labelledby="hero-title">
             <div class="hero-container">
                 <div class="hero-content reveal">
                     <span class="hero-kicker">Официальное учреждение с внушительным обликом</span>
-                    <h1>Заготовка. Качество. Дисциплина.</h1>
-                    <p>Черноморское отделение Арбатовской конторы: надежный поставщик вторичного сырья для нужд гребеночной и мундштучной промышленности.</p>
+                    <p class="hero-ledger">Черноморское отделение Арбатовской конторы</p>
+                    <h1 id="hero-title">Заготовка. Качество. Дисциплина.</h1>
+                    <p class="hero-description">Надежный поставщик вторичного сырья для нужд гребеночной и мундштучной промышленности, а также образцовый образец канцелярской сосредоточенности.</p>
                     <div class="hero-actions">
-                        <a href="#contacts" class="cta-button">Подать прошение</a>
-                        <a href="#team" class="cta-button cta-button-secondary">Осмотреть состав отделения</a>
+                        <button type="button" class="cta-button petition-trigger" aria-controls="petition-modal" aria-haspopup="dialog">Подать прошение в канцелярию</button>
+                        <a href="#team" class="cta-button cta-button-secondary">Осмотреть личный состав</a>
                     </div>
-                    <div class="hero-metrics">
-                        <div class="hero-metric">
-                            <strong>4 должности</strong>
-                            <span>Выстроенная административная структура</span>
-                        </div>
-                        <div class="hero-metric">
-                            <strong>1930 - 2026</strong>
-                            <span>Фасад серьезности и бумажной устойчивости</span>
-                        </div>
-                        <div class="hero-metric">
-                            <strong>1 вакансия</strong>
-                            <span>Открыта штатная единица конторщицы</span>
-                        </div>
+                    <p class="hero-note">Прием прошений, заявлений и иных волнующих бумаг ведется в порядке живой очереди, без паники и громких возгласов.</p>
+                    <div class="hero-bulletin">
+                        <article class="hero-bulletin-card">
+                            <span class="hero-bulletin-label">Служебная сводка</span>
+                            <p class="hero-bulletin-text">Сегодня в отделении ведутся прием посетителей, разбор входящих бумаг и последовательное наведение канцелярского порядка.</p>
+                        </article>
+                        <article class="hero-bulletin-card">
+                            <span class="hero-bulletin-label">К рассмотрению принимаются</span>
+                            <ul class="hero-bulletin-list">
+                                <li>прошения и заявления установленного образца;</li>
+                                <li>справки, записки и объяснения с разборчивым почерком;</li>
+                                <li>деловые бумаги без помарок и чрезмерной горячности.</li>
+                            </ul>
+                        </article>
                     </div>
                 </div>
                 <div class="hero-visual reveal">
                     <div class="hero-poster">
-                        <img src="images/office-identity.jpg" alt="Служебный портрет представителей отделения" width="608" height="406" decoding="async" fetchpriority="high">
+                        <img src="images/office-identity.jpg" alt="Групповой портрет служащих Черноморского отделения в официальной обстановке" width="608" height="406" decoding="async" fetchpriority="high">
                         <div class="hero-poster-meta">
                             <span>Черноморск</span>
                             <strong>Присутственные лица при исполнении служебных полномочий</strong>
@@ -89,23 +99,25 @@
             </div>
         </section>
 
-        <div class="office-identity">
+        <section class="office-identity" aria-labelledby="office-identity-title">
             <div class="identity-grid reveal">
                 <div class="identity-image">
-                    <img src="images/hero-bg.jpg" alt="Сотрудники отделения в рабочей обстановке" width="800" height="450" loading="lazy" decoding="async">
+                    <img src="images/hero-bg.jpg" alt="Руководство отделения за рабочим столом в часы приема посетителей" width="800" height="450" loading="lazy" decoding="async">
                 </div>
                 <div class="identity-text">
-                    <h3>Лицо учреждения</h3>
+                    <span class="section-label">Архивный снимок</span>
+                    <h2 id="office-identity-title">Лицо учреждения</h2>
                     <p>На снимке представлено рабочее пространство руководства в часы приема посетителей. Здесь, в атмосфере канцелярской важности и административной ответственности, принимаются ключевые решения по обеспечению промышленного сектора необходимым рого-копытным сырьем.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <section id="about">
-            <h2>О компании</h2>
+        <section id="about" aria-labelledby="about-title">
+            <span class="section-label">Справка о филиале</span>
+            <h2 id="about-title">О компании</h2>
             <div class="about-block reveal">
                 <div class="about-image">
-                    <img src="images/about-building.jpg" alt="Главное здание Черноморского отделения" width="590" height="429" loading="lazy" decoding="async">
+                    <img src="images/about-building.jpg" alt="Фасад здания Черноморского отделения Арбатовской конторы" width="590" height="429" loading="lazy" decoding="async">
                     <span class="photo-stamp">Проверено канцелярией</span>
                 </div>
                 <div class="about-text">
@@ -115,8 +127,9 @@
             </div>
         </section>
 
-        <section id="activities">
-            <h2>Ключевые направления деятельности</h2>
+        <section id="activities" aria-labelledby="activities-title">
+            <span class="section-label">Учетный лист № 1</span>
+            <h2 id="activities-title">Ключевые направления деятельности</h2>
             <div class="activities-grid">
                 <div class="activity-card reveal">
                     <span class="card-index">01</span>
@@ -141,64 +154,77 @@
             </div>
         </section>
 
-        <section id="infra">
-            <h2>Инфраструктура и рабочая среда</h2>
+        <section id="infra" aria-labelledby="infra-title">
+            <span class="section-label">Материальная база</span>
+            <h2 id="infra-title">Инфраструктура и рабочая среда</h2>
             <div class="infra-grid">
                 <div class="infra-item reveal">
-                    <img src="images/entrance-sign.jpg" alt="Входная группа и вывеска учреждения" width="700" height="401" loading="lazy" decoding="async">
+                    <img src="images/entrance-sign.jpg" alt="Входная группа Черноморского отделения с официальной вывеской конторы" width="700" height="401" loading="lazy" decoding="async">
                     <div class="infra-caption">Входная группа и официальная вывеска учреждения</div>
                 </div>
                 <div class="infra-item infra-item-reception reveal">
-                    <img src="images/reception-zone.jpg" alt="Зона приема посетителей в отделении" width="700" height="424" loading="lazy" decoding="async">
+                    <img src="images/reception-zone.jpg" alt="Зал ожидания и место первичного приема посетителей при канцелярии" width="700" height="424" loading="lazy" decoding="async">
                     <div class="infra-caption">Зал ожидания и зона первичного приема посетителей</div>
                 </div>
                 <div class="infra-item reveal">
-                    <img src="images/office-cabinet.jpg" alt="Рабочий кабинет административного планирования" width="700" height="425" loading="lazy" decoding="async">
+                    <img src="images/office-cabinet.jpg" alt="Рабочий кабинет для административного планирования и служебных совещаний" width="700" height="425" loading="lazy" decoding="async">
                     <div class="infra-caption">Рабочий кабинет для административного планирования</div>
                 </div>
                 <div class="infra-item reveal">
-                    <img src="images/service-room.jpg" alt="Служебное помещение для работы персонала" width="640" height="316" loading="lazy" decoding="async">
+                    <img src="images/service-room.jpg" alt="Служебное помещение для обработки бумаг и оперативных данных" width="640" height="316" loading="lazy" decoding="async">
                     <div class="infra-caption">Служебное помещение для обработки оперативных данных</div>
                 </div>
             </div>
         </section>
 
-        <section id="team">
-            <h2>Личный состав</h2>
+        <section id="team" aria-labelledby="team-title">
+            <span class="section-label">Личные дела</span>
+            <h2 id="team-title">Личный состав</h2>
             <p class="section-lead">В разделе представлены руководители и сотрудники отделения с указанием должностей, функциональных обязанностей и зон ответственности.</p>
             <div class="team-grid">
                 <div class="team-member reveal">
-                    <img src="images/ostap-bender.jpg" alt="Остап Бендер, начальник отделения" width="250" height="250" loading="lazy" decoding="async">
+                    <img src="images/ostap-bender.jpg" alt="Портрет начальника отделения Остапа Бендера в официальной обстановке" width="250" height="250" loading="lazy" decoding="async">
                     <span class="member-role">Начальник отделения</span>
-                    <h4>Остап Бендер</h4>
+                    <span class="member-dossier">Личное дело № 01</span>
+                    <h3>Остап Бендер</h3>
                     <p class="team-note">Формирует направление работы отделения и поддерживает должный уровень административного блеска.</p>
                 </div>
                 <div class="team-member reveal">
-                    <img src="images/shura-balaganov.jpg" alt="Шура Балаганов, уполномоченный по копытам" width="462" height="500" loading="lazy" decoding="async">
+                    <img src="images/shura-balaganov.jpg" alt="Портрет Шуры Балаганова, уполномоченного по копытам, при исполнении служебных обязанностей" width="462" height="500" loading="lazy" decoding="async">
                     <span class="member-role">Уполномоченный по копытам</span>
-                    <h4>Шура Балаганов</h4>
+                    <span class="member-dossier">Личное дело № 02</span>
+                    <h3>Шура Балаганов</h3>
                     <p class="team-note">Курирует профильное направление, сопровождает поручения и держит руку на текущем потоке дел.</p>
                 </div>
                 <div class="team-member reveal">
-                    <img src="images/m-s-panikovskiy.jpg" alt="М. С. Паниковский, курьер отделения" width="193" height="262" loading="lazy" decoding="async">
+                    <img src="images/m-s-panikovskiy.jpg" alt="Портрет курьера отделения М. С. Паниковского в служебной обстановке" width="193" height="262" loading="lazy" decoding="async">
                     <span class="member-role">Курьер</span>
-                    <h4>М. С. Паниковский</h4>
+                    <span class="member-dossier">Личное дело № 03</span>
+                    <h3>М. С. Паниковский</h3>
                     <p class="team-note">Обеспечивает движение бумаг, срочные визиты и оперативное присутствие вне канцелярского стола.</p>
                 </div>
                 <div class="team-member reveal">
-                    <img src="images/funt.jpg" alt="Фунт, зицпредседатель" width="492" height="618" loading="lazy" decoding="async">
+                    <img src="images/funt.jpg" alt="Портрет зицпредседателя Фунта в официальной обстановке" width="492" height="618" loading="lazy" decoding="async">
                     <span class="member-role">Зицпредседатель</span>
-                    <h4>Фунт</h4>
+                    <span class="member-dossier">Личное дело № 04</span>
+                    <h3>Фунт</h3>
                     <p class="team-note">Придает структуре официальный силуэт и выдерживает весь объем представительской серьезности.</p>
                 </div>
             </div>
         </section>
 
-        <section id="vacancies">
-            <h2>Открыт набор в контору</h2>
+        <section id="vacancies" aria-labelledby="vacancies-title">
+            <span class="section-label">Кадровое сообщение</span>
+            <h2 id="vacancies-title">Открыт набор в контору</h2>
             <div class="vacancy-container reveal">
                 <span class="vacancy-badge">Открыт набор</span>
                 <h3>Конторщица (1 штатная единица)</h3>
+                <p class="vacancy-summary">Требуется человек выдержанный, аккуратный в обращении с бумагами и не склонный терять самообладание при виде папок, прошений и ведомостей.</p>
+                <div class="vacancy-tags" aria-label="Ключевые требования">
+                    <span>Аккуратность</span>
+                    <span>Почерк</span>
+                    <span>Выдержка</span>
+                </div>
                 <p><strong>Обязанности:</strong></p>
                 <ul class="vacancy-list">
                     <li>Ведение входящей и исходящей переписки;</li>
@@ -209,13 +235,14 @@
                 </ul>
                 <div class="vacancy-actions">
                     <p>Кандидатуры рассматриваются при личном визите в часы приема.</p>
-                    <a href="#contacts" class="cta-button vacancy-action">Подать прошение</a>
+                    <button type="button" class="cta-button vacancy-action petition-trigger" aria-controls="petition-modal" aria-haspopup="dialog">Подать прошение</button>
                 </div>
             </div>
         </section>
 
-        <section id="contacts">
-            <h2>Контакты</h2>
+        <section id="contacts" aria-labelledby="contacts-title">
+            <span class="section-label">Приемные часы</span>
+            <h2 id="contacts-title">Контакты</h2>
             <div class="contacts-flex">
                 <div class="contact-details">
                     <span class="contact-badge">Приемная учреждения</span>
@@ -224,16 +251,29 @@
                     <p>Понедельник - Пятница: 09:00 - 18:00 (Обед 13:00 - 14:00)</p>
                     <p>Суббота: 10:00 - 14:00</p>
                     <p>Воскресенье: выходной</p>
+                    <p class="contact-note">Прошения, справки и вопросы о штатных единицах принимаются последовательно, без толкотни и лишней выразительности.</p>
                     <div class="contact-actions">
                         <a href="#vacancies" class="cta-button contact-action">Осмотреть вакансию</a>
                     </div>
                 </div>
                 <div class="contact-visual">
-                    <img src="images/contact-hours.jpg" alt="Приемное пространство рядом с информацией о графике работы" width="888" height="444" loading="lazy" decoding="async">
+                    <img src="images/contact-hours.jpg" alt="Приемная учреждения с местом ожидания посетителей и служебной перегородкой" width="888" height="444" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
     </main>
+
+    <div class="telegram-modal" id="petition-modal" hidden aria-hidden="true">
+            <div class="telegram-modal__backdrop" data-close-modal="true"></div>
+            <div class="telegram-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="petition-title" aria-describedby="petition-text">
+                <button type="button" class="telegram-modal__close" aria-label="Закрыть уведомление" data-close-modal="true">×</button>
+                <div class="telegram-modal__eyebrow">Канцелярская телеграмма</div>
+                <h3 class="telegram-modal__title" id="petition-title">Прошение зарегистрировано</h3>
+                <p class="telegram-modal__text" id="petition-text">Ваше прошение принято к рассмотрению канцелярией. Ожидайте вызова. Соблюдайте тишину</p>
+                <div class="telegram-modal__stamp">Принято канцелярией</div>
+                <button type="button" class="cta-button telegram-modal__action" data-close-modal="true">Понял</button>
+            </div>
+    </div>
 
     <footer>
         <div class="footer-brand">Черноморское отделение «Рога и копыта»</div>
@@ -256,12 +296,44 @@
         const sections = document.querySelectorAll('main section[id]');
         const revealElements = document.querySelectorAll('.reveal');
         const typoSwitch = document.getElementById('typo-switch');
+        const petitionTriggers = document.querySelectorAll('.petition-trigger');
+        const petitionModal = document.getElementById('petition-modal');
+        const petitionModalCloseButton = petitionModal ? petitionModal.querySelector('.telegram-modal__close') : null;
+        let lastPetitionTrigger = null;
         let originalTextMap = new Map();
 
         function closeMobileMenu() {
             if (!navToggle || !navLinks) return;
             navToggle.setAttribute('aria-expanded', 'false');
             navLinks.classList.remove('is-open');
+        }
+
+        function openPetitionModal() {
+            if (!petitionModal) return;
+            petitionModal.hidden = false;
+            petitionModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            requestAnimationFrame(() => {
+                petitionModal.classList.add('is-open');
+                if (petitionModalCloseButton) {
+                    petitionModalCloseButton.focus();
+                }
+            });
+        }
+
+        function closePetitionModal() {
+            if (!petitionModal) return;
+            petitionModal.classList.remove('is-open');
+            petitionModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            window.setTimeout(() => {
+                if (petitionModal && !petitionModal.classList.contains('is-open')) {
+                    petitionModal.hidden = true;
+                    if (lastPetitionTrigger) {
+                        lastPetitionTrigger.focus();
+                    }
+                }
+            }, 220);
         }
 
         if (navToggle && navLinks) {
@@ -286,6 +358,23 @@
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     closeMobileMenu();
+                    closePetitionModal();
+                }
+            });
+        }
+
+        petitionTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                lastPetitionTrigger = trigger;
+                closeMobileMenu();
+                openPetitionModal();
+            });
+        });
+
+        if (petitionModal) {
+            petitionModal.addEventListener('click', (event) => {
+                if (event.target instanceof HTMLElement && event.target.dataset.closeModal === 'true') {
+                    closePetitionModal();
                 }
             });
         }
@@ -302,7 +391,13 @@
                 });
 
                 document.querySelectorAll('.nav-links a').forEach((link) => {
-                    link.classList.toggle('is-active', link.getAttribute('href') === `#${currentId}`);
+                    const isCurrent = link.getAttribute('href') === `#${currentId}`;
+                    link.classList.toggle('is-active', isCurrent);
+                    if (isCurrent) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
                 });
             };
 
