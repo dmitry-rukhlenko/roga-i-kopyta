@@ -12,6 +12,7 @@
     --shadow-offset-dark: 14px 14px 0 rgba(24, 18, 15, 0.28);
     --soft-shadow: 0 20px 50px rgba(24, 18, 15, 0.14);
     --transition: 0.32s ease;
+    --typewriter-font: "Courier Prime", "Courier New", monospace;
 }
 
 html {
@@ -48,12 +49,12 @@ a {
 }
 
 section[id] {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 88px;
 }
 
 header {
-    position: fixed;
-    inset: 0 0 auto;
+    position: sticky;
+    top: 0;
     z-index: 1000;
     background: rgba(244, 234, 217, 0.95);
     border-bottom: 2px solid var(--line);
@@ -183,7 +184,7 @@ nav {
 .hero {
     position: relative;
     overflow: hidden;
-    padding: 128px 1.5rem 88px;
+    padding: 74px 1.5rem 88px;
     background:
         radial-gradient(circle at 18% 16%, rgba(198, 147, 89, 0.12), transparent 24%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 40%),
@@ -247,6 +248,7 @@ nav {
     letter-spacing: 0.16em;
     font-size: 0.72rem;
     font-weight: 700;
+    font-family: var(--typewriter-font);
 }
 
 .hero h1 {
@@ -289,12 +291,13 @@ nav {
     font-size: 0.82rem;
     font-weight: 800;
     box-shadow: 8px 8px 0 rgba(24, 18, 15, 0.18), inset 0 0 0 1px rgba(120, 89, 55, 0.18);
-    transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition), filter var(--transition);
 }
 
 .cta-button:hover {
-    transform: translate(-3px, -4px);
-    box-shadow: 12px 12px 0 rgba(24, 18, 15, 0.24);
+    transform: translate(-3px, -4px) scale(1.02);
+    box-shadow: 14px 14px 0 rgba(24, 18, 15, 0.24);
+    filter: brightness(1.02);
 }
 
 .cta-button-secondary {
@@ -307,6 +310,7 @@ nav {
 .cta-button-secondary:hover {
     background: rgba(246, 239, 226, 0.08);
     box-shadow: none;
+    transform: translateY(-2px);
 }
 
 .hero-metrics {
@@ -376,6 +380,7 @@ nav {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .hero-visual:hover .hero-poster {
@@ -411,6 +416,7 @@ nav {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .hero-poster-meta strong {
@@ -625,6 +631,7 @@ h2 {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transform: rotate(-7deg);
+    font-family: var(--typewriter-font);
 }
 
 .activities-grid,
@@ -644,7 +651,7 @@ h2 {
 .vacancy-container,
 .contact-details {
     border: 2px solid var(--line);
-    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition), background var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition), background var(--transition), border-color var(--transition);
 }
 
 .activity-card {
@@ -669,8 +676,10 @@ h2 {
 }
 
 .activity-card:hover {
-    transform: translate(-4px, -7px);
-    box-shadow: 16px 16px 0 rgba(24, 18, 15, 0.24);
+    transform: translate(-5px, -8px) scale(1.02);
+    box-shadow: 18px 18px 0 rgba(24, 18, 15, 0.24);
+    border-color: rgba(109, 21, 23, 0.88);
+    background: linear-gradient(180deg, #f8efde 0%, #f1e4d0 100%);
 }
 
 .activity-card:hover::before {
@@ -685,6 +694,7 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .activity-card h3,
@@ -715,35 +725,42 @@ h2 {
     min-height: 0;
     aspect-ratio: 1.7 / 1;
     overflow: hidden;
+    isolation: isolate;
     background: var(--cream-light);
     border: 2px solid var(--line);
     box-shadow: var(--shadow-offset);
 }
 
 .infra-item img {
+    position: relative;
+    z-index: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
     background: rgba(221, 207, 187, 0.7);
     filter: grayscale(1) sepia(0.16) contrast(1.04);
-    transition: transform 0.8s ease, filter 0.8s ease;
+    transition: transform 0.8s ease;
+    will-change: transform;
+}
+
+.infra-item-reception img {
+    object-fit: cover;
+    object-position: center;
+    background: transparent;
 }
 
 .infra-item::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(180deg, rgba(24, 18, 15, 0), rgba(24, 18, 15, 0.12));
-    transition: opacity var(--transition);
+    opacity: 1;
+    pointer-events: none;
 }
 
 .infra-item:hover img {
-    transform: scale(1.08);
-    filter: saturate(1.04) contrast(1.06);
-}
-
-.infra-item:hover::after {
-    opacity: 0.9;
+    transform: scale(1.06);
 }
 
 .infra-caption {
@@ -751,13 +768,13 @@ h2 {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     min-height: 58px;
     display: flex;
     align-items: center;
     max-width: none;
     padding: 0.75rem 0.9rem;
-    background: linear-gradient(180deg, rgba(247, 239, 224, 0.98) 0%, rgba(238, 226, 205, 0.96) 100%);
+    background: #f2e6d2;
     color: var(--ink);
     border-top: 1px solid var(--line);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
@@ -765,12 +782,10 @@ h2 {
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: transform var(--transition), background var(--transition);
-}
-
-.infra-item:hover .infra-caption {
-    transform: none;
-    background: var(--cream-light);
+    font-family: var(--typewriter-font);
+    pointer-events: none;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .section-lead {
@@ -828,6 +843,7 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .team-member h4 {
@@ -867,6 +883,7 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .vacancy-container:hover {
@@ -886,6 +903,7 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .vacancy-container h3 {
@@ -949,6 +967,7 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .contact-primary {
@@ -1021,6 +1040,7 @@ footer {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    font-family: var(--typewriter-font);
 }
 
 .switch {
@@ -1140,7 +1160,7 @@ input:checked + .slider::before {
     }
 
     .hero {
-        padding-top: 116px;
+        padding-top: 56px;
     }
 
     .hero-metrics,
@@ -1166,6 +1186,10 @@ input:checked + .slider::before {
     footer {
         padding-left: 1rem;
         padding-right: 1rem;
+    }
+
+    .hero {
+        padding-top: 48px;
     }
 
     .hero h1 {
